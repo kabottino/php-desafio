@@ -65,7 +65,7 @@ if
                     </div>
                     
                     <div>
-                        <a href="createUsuario.php">Ainda não tenho cadastro</a>
+                        <a href="createUsuario.php">Não possuo cadastro</a>
                     </div>
 					<button class="btn btn-primary btn-block mt-2" type="submit">Logar</button>
 				</form>
