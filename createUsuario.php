@@ -62,7 +62,7 @@ if(isset($_POST["excluir"])){
 
 <body>
 	<div class="stick-top">
-		<?php require('./includes/navbar.php'); ?>
+		<?php require ('./includes/navbar.php'); ?>
 	</div>
 	<main class="container">
 
