@@ -20,7 +20,7 @@ $elementos = count($produtodec);
 if ($elementos == 0){
   $cadastrarproduto ["id"] = 1;
 }else{
-  $id = $produtodec[$elementos-1]["id"];
+  $id = $produtodec [$elementos-1]["id"];
   $cadastrarproduto ["id"] = $id+1;
 }
 
@@ -31,7 +31,7 @@ $nomefile = "produto". $cadastrarproduto ["id"]. "." . $extensao;
 
 $arquivo = $_FILES["file"]["tmp_name"];
 
-$cadastrarproduto["foto"] = "fotosprod/". $nomefile;
+$cadastrarproduto["foto"] = "imgproduto/". $nomefile;
 
 $movendo = move_uploaded_file($arquivo, $cadastrarproduto["foto"]);
 
