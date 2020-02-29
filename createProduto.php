@@ -4,7 +4,7 @@ session_start();
 if (empty ($_SESSION)){
   header("Location:login.php");exit;
 } 
-
+//Para garantir que o bloco de código vai ser executado se tiver $_POST
 if ($_POST){
 
 $cadastrarproduto = $_POST;
@@ -12,15 +12,15 @@ $cadastrarproduto = $_POST;
 //pegando dados do json
 $produto = file_get_contents('produtos.json');
 
-$produtodec = json_decode($produto, true);
+$produtos = json_decode($produto, true);
 
-$elementos = count($produtodec);
+$elementos = count($produtos);
 
-//criando id
+//criando id para os produtos
 if ($elementos == 0){
   $cadastrarproduto ["id"] = 1;
 }else{
-  $id = $produtodec [$elementos-1]["id"];
+  $id = $produtos [$elementos-1]["id"];
   $cadastrarproduto ["id"] = $id+1;
 }
 
@@ -36,11 +36,11 @@ $cadastrarproduto["foto"] = "imgproduto/". $nomefile;
 $movendo = move_uploaded_file($arquivo, $cadastrarproduto["foto"]);
 
 //inserindo dados no json
-$produtodec[] =  $cadastrarproduto;
+$produtos[] =  $cadastrarproduto;
 
-$inserir = json_encode($produtodec);
+$adicionar = json_encode($produtos);
 
-file_put_contents('produtos.json' , $inserir);
+file_put_contents('produtos.json' , $adicionar);
 }
 ?>
 
