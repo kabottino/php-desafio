@@ -7,9 +7,9 @@ $usuario = file_get_contents('usuarios.json');
 $usuariodec = json_decode($usuario, true);
 
 if (isset($_POST["adicionar"])) {
-	//fazendo um if para verificar a senha
+	//fazendo um if para verificar confirmar a senha
 	if ($_POST["senha"] != $_POST["confirmasenha"]) {
-		echo "Confirmação de senha inválida";
+		echo "As senhas digitadas são diferentes";
 	} else {
 		$dadosusuario = array(
 			"nome" => $_POST["nome"],
