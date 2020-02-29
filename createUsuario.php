@@ -11,16 +11,16 @@ if (isset($_POST["adicionar"])) {
 	if ($_POST["senha"] != $_POST["confirmasenha"]) {
 		echo "As senhas digitadas são diferentes";
 	} else {
-		$dadosusuario = array(
+		$infousuario = array(
 			"nome" => $_POST["nome"],
 			"email" => $_POST["email"],
 			"senha" => password_hash($_POST["senha"], PASSWORD_DEFAULT)
 		);
 
 		//inserir os dados no json
-		$usuariodec[] = $dadosusuario;
-		$inserirusuario = json_encode($usuariodec);
-		file_put_contents('usuarios.json', $inserirusuario);
+		$usuariodec[] = $infousuario;
+		$addusuario = json_encode($usuariodec);
+		file_put_contents('usuarios.json', $addusuario);
 	}
 }
 

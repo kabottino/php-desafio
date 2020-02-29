@@ -60,7 +60,7 @@ file_put_contents('produtos.json' , $adicionar);
 
 <body>
   <div class="stick-top">
-    <?php require('./includes/navbar.php'); ?>
+    <?php require ('./includes/navbar.php'); ?>
   </div>
 
   <div class="container">
