@@ -7,24 +7,24 @@ if (empty ($_SESSION)){
 
 $produto = file_get_contents('produtos.json');
 
-$produtodec = json_decode($produto, true);
+$produtos = json_decode($produto, true);
 
 
 //excluir os arquivos
 if(isset($_POST["excluir"])){
 
 
-$posicao = array_search($_POST["id"], array_column($produtodec,"id"));
+$posicao = array_search($_POST["id"], array_column($produtos,"id"));
 
 //delatar foto
-unlink($produtodec[$posicao]["foto"]);
+unlink($produtos[$posicao]["foto"]);
 
 //deletando os dados
-unset($produtodec[$posicao]);
+unset($produtos[$posicao]);
 
 
 //reordenando os arrays
-$reordena = array_values($produtodec);
+$reordena = array_values($produtos);
 
 //encoda os dados
 $encoda = json_encode($reordena);
@@ -34,12 +34,7 @@ file_put_contents('produtos.json' , $encoda);
 
 }
 
-
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +64,7 @@ file_put_contents('produtos.json' , $encoda);
   </thead>
   <tbody>
       <?php
-      foreach($produtodec as $produtotable){
+      foreach($produtos as $produtotable){
       ?>
     <tr>
       <th scope="row"> <?php echo $produtotable["id"];  ?> </th>
