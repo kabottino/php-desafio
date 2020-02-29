@@ -25,7 +25,7 @@ if ($_POST) {
 		
 		//fazendo um if para verificar a senha
 		if ($_POST["senha"] != $_POST["confirmasenha"]) {
-			echo "Confirmação de senha inválida";
+			echo "As senhas digitadas são diferentes";
 		} else {
 			
 			$usuariodec[$posicao]["senha"] = password_hash($_POST["senha"], PASSWORD_DEFAULT);
