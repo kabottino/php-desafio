@@ -8,15 +8,15 @@ if (empty ($_SESSION)){
 //trazendo os dados do json
 $produto = file_get_contents('produtos.json');
 
-$produtodec = json_decode($produto, true);
+$produtos = json_decode($produto, true);
 //achando a posicao do id
-$posicao = array_search($_GET["id"], array_column($produtodec,"id"));
+$posicao = array_search($_GET["id"], array_column($produtos,"id"));
 //se algo for passado pelo formulario
 if($_POST){
 
-$produtodec[$posicao] ["nome"] = $_POST["nome"];
-$produtodec[$posicao] ["preco"] = $_POST["preco"];
-$produtodec[$posicao] ["descricao"] = $_POST["descricao"];
+$produtos[$posicao] ["nome"] = $_POST["nome"];
+$produtos[$posicao] ["preco"] = $_POST["preco"];
+$produtos[$posicao] ["descricao"] = $_POST["descricao"];
 
 //inserindo arquivo
 $extensao = pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
@@ -30,7 +30,7 @@ $cadastrarproduto["foto"] = "fotosprod/". $nomefile;
 $movendo = move_uploaded_file($arquivo, $cadastrarproduto["foto"]);
 
 //inserindo os dados alterados no json
-$alterar = json_encode($produtodec);
+$alterar = json_encode($produtos);
 
 file_put_contents('produtos.json' , $alterar);
 }
@@ -63,20 +63,20 @@ file_put_contents('produtos.json' , $alterar);
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $produtodec[$posicao]["nome"]; ?> ">
+            <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $produtos[$posicao]["nome"]; ?> ">
           </div>
           <div class="form-group col-md-6">
             <label for="preco">Preço</label>
-            <input type="number" class="form-control" id="preco" name="preco" value="<?php echo $produtodec[$posicao]["preco"]; ?>">
+            <input type="number" class="form-control" id="preco" name="preco" value="<?php echo $produtos[$posicao]["preco"]; ?>">
           </div>
         </div>
 
         <div class="form-group">
           <label for="descricao">Descrição</label><br>
-          <textarea class="form-control" name="descricao" rows="10"><?php echo $produtodec[$posicao]["descricao"]; ?></textarea>
+          <textarea class="form-control" name="descricao" rows="10"><?php echo $produtos[$posicao]["descricao"]; ?></textarea>
         </div>
         <div>
-            <img src="<?php echo $produtodec[$posicao]["foto"];?>" alt="">
+            <img src="<?php echo $produtos[$posicao]["foto"];?>" alt="">
         </div>
         <div class="custom-file">
           <input type="file" class="custom-file-input" id="customFile" name="file">
